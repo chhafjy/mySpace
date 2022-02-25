@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caf.yeb.dao.menu.MenuDao">
+    <resultMap id="MenuMap" type="com.caf.yeb.beans.menu.model.Menu" >
+        <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
+        <result property="menuUuid" column="menu_uuid" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="path" column="path" jdbcType="VARCHAR"/>
+        <result property="component" column="component" jdbcType="VARCHAR"/>
+        <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="isActivation" column="is_activation" jdbcType="VARCHAR"/>
+        <result property="parentId" column="parent_id" jdbcType="VARCHAR"/>
+        <result property="depth" column="depth" jdbcType="VARCHAR"/>
+        <result property="isEnable" column="is_enable" jdbcType="VARCHAR"/>
+        <result property="deleteFlag" column="delete_flag" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        menu_id,menu_uuid,url,path,component,menu_name,icon,is_activation,parent_id,depth
+        ,is_enable,delete_flag,create_time,modify_time
+    </sql>
+</mapper>

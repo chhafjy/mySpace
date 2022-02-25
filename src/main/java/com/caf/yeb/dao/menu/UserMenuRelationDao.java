@@ -1,0 +1,14 @@
+package com.caf.yeb.dao.menu;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.caf.yeb.beans.menu.model.UserMenuRelation;
+
+/**
+ * (UserMenuRelation)表数据库访问层
+ *
+ * @author chenhaohao
+ * @since 2022-01-11 13:55:54
+ */
+public interface UserMenuRelationDao extends BaseMapper<UserMenuRelation> {
+
+}

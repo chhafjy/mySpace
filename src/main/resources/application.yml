@@ -1,0 +1,40 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: one
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/caf?serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&characterEncoding=UTF-8&useUnicode=true
+    username: root
+    password: 123456
+    hikari:
+      connection-timeout: 6000
+      maximum-pool-size: 5
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-active: 200
+          # 连接池最大阻塞等待时间（使用负值表示没有限制） 表示连接池的链接拿完了 现在去申请需要等待的时间
+        max-wait: -1
+          # 连接池中的最大空闲连接
+        max-idle: 10
+          # 连接池中的最小空闲连接
+        min-idle: 0
+          # 连接超时时间（毫秒） 去链接redis服务端
+      timeout: 6000
+mybatis-plus:
+  mapperLocations: classpath:mybatis/mapper/**/*.xml
+jwt:
+  # JWT 存储的请求头
+  tokenHeader: Authorization
+  # JWT 加解密使用的秘钥
+  secret: cat-secret
+  # JWT 超时时间限制（60*60*24）
+  expiration: 86400
+  # JWT 负载中拿到开头
+  tokenHead: Bearer

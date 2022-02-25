@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caf.yeb.dao.menu.UserMenuRelationDao">
+    <resultMap id="UserMenuRelationMap" type="com.caf.yeb.beans.menu.model.UserMenuRelation" >
+        <result property="relationId" column="relation_id" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
+        <result property="deleteFlag" column="delete_flag" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+  
+    <sql id="Base_Column_List">
+        relation_id, user_id, menu_id, delete_flag, create_time, modify_time        
+    </sql>
+</mapper>

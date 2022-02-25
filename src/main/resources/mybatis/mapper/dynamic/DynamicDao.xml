@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caf.yeb.dao.dynamic.DynamicDao">
+    <resultMap id="DynamicMap" type="com.caf.yeb.beans.dynamic.model.Dynamic" >
+        <result property="dynamicId" column="dynamic_id" jdbcType="VARCHAR"/>
+        <result property="dynamicUuid" column="dynamic_uuid" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="viewCount" column="view_count" jdbcType="INTEGER"/>
+        <result property="deleteFlag" column="delete_flag" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+  
+    <sql id="Base_Column_List">
+        dynamic_id, dynamic_uuid, content, user_id, view_count, delete_flag, create_time, modify_time        
+    </sql>
+</mapper>
