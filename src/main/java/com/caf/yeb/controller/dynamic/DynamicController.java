@@ -1,6 +1,7 @@
 package com.caf.yeb.controller.dynamic;
 
 import com.caf.yeb.beans.dynamic.request.AddDynamicParam;
+import com.caf.yeb.beans.dynamic.request.ThumbsUpParam;
 import com.caf.yeb.common.pojo.R;
 import com.caf.yeb.service.dynamic.DynamicService;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,18 @@ public class DynamicController {
     @GetMapping(value = {"/p/dynamic/delete"})
     public R dynamicDelete(@RequestParam String dynamicId) {
         dynamicService.removeByIds(dynamicId);
+        return R.success();
+    }
+
+    /**
+     * 点赞
+     * @param param : 入参
+     * @author chenhaohao
+     * @return {@link}
+     */
+    @PostMapping(value = {"/p/dynamic/thumbs/up"})
+    public R thumbsUp(@RequestBody @Valid ThumbsUpParam param) {
+        dynamicService.thumbsUp(param);
         return R.success();
     }
 

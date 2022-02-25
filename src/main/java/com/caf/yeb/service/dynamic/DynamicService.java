@@ -4,6 +4,7 @@ package com.caf.yeb.service.dynamic;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.caf.yeb.beans.dynamic.model.Dynamic;
 import com.caf.yeb.beans.dynamic.request.AddDynamicParam;
+import com.caf.yeb.beans.dynamic.request.ThumbsUpParam;
 
 import java.io.Serializable;
 
@@ -44,6 +45,12 @@ public interface DynamicService extends IService<Dynamic> {
     void saveOrUpdateDynamic(AddDynamicParam param);
 
 
-    void thumbsUp();
+    /**
+     * 点赞
+     * @param param : 入参
+     * @author chenhaohao
+     * @return {@link}
+     */
+    void thumbsUp(ThumbsUpParam param);
 
 }

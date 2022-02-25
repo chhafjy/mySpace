@@ -24,13 +24,13 @@ public class RedisUtils {
     private RedisTemplate<String, Object> redisTemplate;
 
 
-    public Boolean set(String key,Object value) {
+    public Boolean set(String key, Object value) {
         try {
             redisTemplate.opsForValue().set(key, value);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("redis set error",e);
+            log.error("redis set error", e);
             return false;
         }
     }
@@ -39,12 +39,12 @@ public class RedisUtils {
         return key == null ? null : redisTemplate.opsForValue().get(key);
     }
 
-    public Boolean set(String key, Object value, long timeout, TimeUnit unit){
+    public Boolean set(String key, Object value, long timeout, TimeUnit unit) {
         try {
             redisTemplate.opsForValue().set(key, value, timeout, unit);
             return true;
         } catch (Exception e) {
-            log.error("redis set is error",e);
+            log.error("redis set is error", e);
             return false;
         }
     }
@@ -53,7 +53,7 @@ public class RedisUtils {
         redisTemplate.delete(key);
     }
 
-    public Boolean addSet(String key, Set set) {
+    public Boolean addSet(String key, Set<String> set) {
         try {
             set.forEach(s -> {
                 redisTemplate.opsForSet().add(key, s);
@@ -65,11 +65,21 @@ public class RedisUtils {
         }
     }
 
+    public Boolean addSet(String key, String str) {
+        try {
+            redisTemplate.opsForSet().add(key, str);
+            return true;
+        } catch (Exception e) {
+            log.error("redis set is error");
+            return false;
+        }
+    }
+
     public Set<Object> getSet(String key) {
         return key == null ? null : redisTemplate.opsForSet().members(key);
     }
 
-    public boolean removeSet(String key,String value) {
+    public boolean removeSet(String key, String value) {
         try {
             redisTemplate.opsForSet().remove(key, value);
             return true;

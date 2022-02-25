@@ -32,7 +32,9 @@ public class LoginController {
     @PostMapping(value = {"/user/login"})
     public R<String> login(HttpServletRequest request, @RequestBody LoginParam param) {
         String token = userService.login(param);
-        if (token == null) return R.error("账号或密码错误");
+        if (token == null) {
+            return R.error("账号或密码错误");
+        }
         return R.success(LoginEnum.LOGIN_SUCCESS,token);
     }
 

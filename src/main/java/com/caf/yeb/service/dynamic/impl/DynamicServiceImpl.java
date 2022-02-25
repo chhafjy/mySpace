@@ -3,7 +3,9 @@ package com.caf.yeb.service.dynamic.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.caf.yeb.beans.dynamic.model.Dynamic;
 import com.caf.yeb.beans.dynamic.request.AddDynamicParam;
+import com.caf.yeb.beans.dynamic.request.ThumbsUpParam;
 import com.caf.yeb.common.util.bean.IdUtils;
+import com.caf.yeb.common.util.redis.RedisUtils;
 import com.caf.yeb.common.util.user.UserHelper;
 import com.caf.yeb.dao.dynamic.DynamicDao;
 import com.caf.yeb.service.dynamic.DynamicService;
@@ -29,6 +31,11 @@ public class DynamicServiceImpl extends ServiceImpl<DynamicDao, Dynamic> impleme
 
     @Resource
     UserHelper userHelper;
+
+    @Resource
+    RedisUtils redisUtils;
+
+    private static final String TAGS_KEY = "Tags";
 
     /**
      * 复写基类通过ID获取详情数据
@@ -78,8 +85,28 @@ public class DynamicServiceImpl extends ServiceImpl<DynamicDao, Dynamic> impleme
         }
     }
 
+    /**
+     * 点赞
+     *
+     * @param param : 入参
+     * @return {@link}
+     * @author chenhaohao
+     */
     @Override
-    public void thumbsUp() {
+    public void thumbsUp(ThumbsUpParam param) {
 
+        String userId = userHelper.getUserId();
+        String key = TAGS_KEY + param.getDynamicId();
+
+        log.info("isThumbsUp is {}", param.getIsThumbsUp());
+
+        //0-点赞  1-取消点赞
+        if(param.getIsThumbsUp() == 0){
+            redisUtils.addSet(key, userId);
+        }
+
+        if(param.getIsThumbsUp() == 1){
+            redisUtils.removeSet(key, userId);
+        }
     }
 }

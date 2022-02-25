@@ -1,6 +1,5 @@
 package com.caf.yeb.common.interceptor;
 
-import com.caf.yeb.common.constact.CommonEnum;
 import com.caf.yeb.common.constact.LoginEnum;
 import com.caf.yeb.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
@@ -26,13 +25,13 @@ public class MyTestInterceptor implements HandlerInterceptor {
 //        return HandlerInterceptor.super.preHandle(request, response, handler);
         String token = request.getHeader("Authorization");
         log.info("token is {}", token);
-        if(StringUtils.isBlank(token)){
+        if (StringUtils.isBlank(token)) {
             log.error("请求头中无法获取token");
             throw new BusinessException(LoginEnum.TOKEN_ERROR);
         }
         Map<String, String> allParams = getAllParams(request);
         String servletPath = request.getServletPath();
-        log.info("请求路径:" + servletPath + "  请求参数为 param {}", allParams.toString());
+        log.info("请求路径:" + servletPath + "  请求参数为 param：" + allParams.toString());
         return true;
     }
 
