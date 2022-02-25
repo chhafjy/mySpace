@@ -77,4 +77,9 @@ public class DynamicServiceImpl extends ServiceImpl<DynamicDao, Dynamic> impleme
             lambdaUpdate().set(Dynamic::getContent, param.getContent()).eq(Dynamic::getDynamicId, dynamicId).update();
         }
     }
+
+    @Override
+    public void thumbsUp() {
+
+    }
 }
