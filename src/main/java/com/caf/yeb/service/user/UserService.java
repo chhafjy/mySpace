@@ -13,6 +13,7 @@ import com.caf.yeb.beans.user.response.UserPageVO;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -31,6 +32,15 @@ public interface UserService extends IService<User> {
      */
     @Override
     User getById(Serializable id);
+
+    /**
+     * 根据IDs获取基本信息
+     *
+     * @param ids 主键ID
+     * @return {@link }
+     * @author chenhaohao
+     */
+    List<User> getByIds(Set<String> ids);
 
     /**
      * 逻辑删除数据

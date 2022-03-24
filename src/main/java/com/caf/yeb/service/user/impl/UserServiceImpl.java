@@ -33,10 +33,7 @@ import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -74,6 +71,18 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     @Override
     public User getById(Serializable id) {
         return lambdaQuery().eq(User::getUserId, id).eq(User::getDeleteFlag, 0).last("limit 1").one();
+    }
+
+    /**
+     * 根据IDs获取基本信息
+     *
+     * @param ids 主键ID
+     * @return {@link }
+     * @author chenhaohao
+     */
+    @Override
+    public List<User> getByIds(Set<String> ids) {
+        return lambdaQuery().in(User::getUserId, ids).eq(User::getDeleteFlag, 0).list();
     }
 
     /**
