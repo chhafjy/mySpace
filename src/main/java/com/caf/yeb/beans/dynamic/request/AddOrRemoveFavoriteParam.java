@@ -19,6 +19,7 @@ public class AddOrRemoveFavoriteParam {
     /**
      * 动态ID
      */
+
     private String dynamicId;
 
     /**
